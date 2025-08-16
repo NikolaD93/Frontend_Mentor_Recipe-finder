@@ -21,7 +21,7 @@ export default function Hero() {
         <Link to="recipes">Start exploring</Link>
       </Button>
       <div className="h-[200px] rounded-[16px] bg-white p-1 md:h-auto lg:p-4">
-        <img className="absolute left-0 z-[-1] w-full lg:bottom-40" src={pattern} alt="pattern" />
+        <img className="absolute left-0 z-[-1] w-full lg:top-100" src={pattern} alt="pattern" />
         <img
           className="h-full w-full rounded-[12px] object-cover md:h-auto"
           src={hero_img}
