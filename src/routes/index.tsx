@@ -2,6 +2,7 @@ import { Navigate, Outlet } from 'react-router';
 
 import { Button } from '@/components/ui/button';
 import Header from '@/components/ui/header';
+import { AboutRoutes } from '@/features/about';
 import NotFound from '@/features/misc/routes/NotFound';
 import { RecipesRoutes } from '@/features/recipes';
 
@@ -35,6 +36,7 @@ export const AppRoutes = [
     path: '/',
     element: <App />,
     children: [
+      { path: 'about/*', element: <AboutRoutes />, errorElement: <ErrorFallback /> },
       { path: 'recipes/*', element: <RecipesRoutes />, errorElement: <ErrorFallback /> },
       { path: '/404', element: <NotFound />, errorElement: <ErrorFallback /> },
       { path: '*', element: <Navigate to="." />, errorElement: <ErrorFallback /> },
