@@ -6,7 +6,7 @@ import RecipeFilters from './RecipeFilters';
 
 export default function Recipes() {
   const recipesData: Recipe[] = recipes;
-  console.log(recipesData);
+
   return (
     <div className="mt-12 lg:mt-20 lg:mb-24">
       <h2 className="text-[40px] leading-[120%] font-extrabold lg:text-center lg:text-5xl">

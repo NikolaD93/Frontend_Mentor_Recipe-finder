@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+
 import iconCookTime from '@/assets/images/icon-cook-time.svg';
 import iconPrepTime from '@/assets/images/icon-prep-time.svg';
 import iconServings from '@/assets/images/icon-servings.svg';
@@ -9,12 +11,11 @@ type recipeCardProps = {
 };
 
 export default function RecipeCard({ recipesData }: recipeCardProps) {
-  console.log(recipesData);
   return (
     <div className="card">
       {recipesData.map((recipe) => {
         return (
-          <div key={recipe.id} className="w-[320px] rounded-md border bg-white p-2 lg:w-[400px]">
+          <div key={recipe.id} className="w-full rounded-md border bg-white p-2 lg:w-[400px]">
             <div>
               <img className="rounded-md" src={recipe.image.small} alt="lorem ipsum dolor" />
             </div>
@@ -38,8 +39,8 @@ export default function RecipeCard({ recipesData }: recipeCardProps) {
                 </div>
               </div>
             </div>
-            <Button size="lg" className="w-full rounded-full">
-              View Recipe
+            <Button asChild size="lg" className="w-full rounded-full">
+              <Link to={recipe.id.toString()}>View Recipe</Link>
             </Button>
           </div>
         );
