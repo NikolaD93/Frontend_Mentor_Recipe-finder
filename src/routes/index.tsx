@@ -3,6 +3,7 @@ import { Navigate, Outlet } from 'react-router';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/ui/header';
 import { AboutRoutes } from '@/features/about';
+import { Home } from '@/features/home';
 import NotFound from '@/features/misc/routes/NotFound';
 import { RecipesRoutes } from '@/features/recipes';
 
@@ -10,7 +11,7 @@ const App = () => {
   return (
     <div className="relative flex min-h-screen flex-col">
       <Header />
-      <div className="flex-1">
+      <div className="flex-1 px-4 md:px-8 lg:px-[124px]">
         <Outlet />
       </div>
     </div>
@@ -36,6 +37,7 @@ export const AppRoutes = [
     path: '/',
     element: <App />,
     children: [
+      { index: true, element: <Home />, errorElement: <ErrorFallback /> },
       { path: 'about/*', element: <AboutRoutes />, errorElement: <ErrorFallback /> },
       { path: 'recipes/*', element: <RecipesRoutes />, errorElement: <ErrorFallback /> },
       { path: '/404', element: <NotFound />, errorElement: <ErrorFallback /> },

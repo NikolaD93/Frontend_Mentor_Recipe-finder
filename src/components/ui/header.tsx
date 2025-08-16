@@ -29,7 +29,7 @@ export default function Header() {
       <button onClick={handleMenuClick} className="rounded-sm bg-[#D0DCD9] p-4 lg:hidden">
         <img src={menu} alt="hamburger menu" />
         <div
-          className={`${toggleMenu ? 'flex' : 'hidden'} absolute top-[89px] right-0 left-0 m-auto w-[90%] flex-col gap-5 rounded-sm bg-white p-2 text-left text-lg font-semibold shadow-[0_12px_22px_2px_rgba(57,88,82,0.16)]`}
+          className={`${toggleMenu ? 'flex' : 'hidden'} absolute top-[89px] right-0 left-0 z-50 m-auto w-[90%] flex-col gap-5 rounded-sm bg-white p-2 text-left text-lg font-semibold shadow-[0_12px_22px_2px_rgba(57,88,82,0.16)]`}
         >
           <ul className="flex flex-col">
             <li className="mt-3 py-3">
