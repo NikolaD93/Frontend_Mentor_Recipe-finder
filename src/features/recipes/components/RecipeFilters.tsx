@@ -1,3 +1,5 @@
+import type { Dispatch, SetStateAction } from 'react';
+
 import searchIcon from '@/assets/images/icon-search.svg';
 import { Input } from '@/components/ui/input';
 import {
@@ -8,7 +10,15 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-export default function RecipeFilters() {
+type recipeFiltersProps = {
+  searchInputValue: string;
+  setSearchInputValue: Dispatch<SetStateAction<string>>;
+};
+
+export default function RecipeFilters({
+  searchInputValue,
+  setSearchInputValue,
+}: recipeFiltersProps) {
   return (
     <div className="mt-16 mb-6 flex flex-col justify-between gap-3 lg:flex-row lg:gap-0">
       <div className="flex flex-col gap-3 lg:flex-row lg:gap-4">
@@ -38,7 +48,11 @@ export default function RecipeFilters() {
         </Select>
       </div>
       <div className="relative">
-        <Input placeholder="Search by name or ingredient…" />
+        <Input
+          value={searchInputValue}
+          onChange={(e) => setSearchInputValue(e.target.value)}
+          placeholder="Search by name or ingredient..."
+        />
         <img className="absolute top-[14px] left-4" src={searchIcon} alt="lorem ipsum dolor" />
       </div>
     </div>

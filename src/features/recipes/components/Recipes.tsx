@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import recipes from '@/data.json';
 import type { Recipe } from '@/types';
 
@@ -6,6 +8,14 @@ import RecipeFilters from './RecipeFilters';
 
 export default function Recipes() {
   const recipesData: Recipe[] = recipes;
+  const [searchInputValue, setSearchInputValue] = useState('');
+  const filteredRecipe = recipesData.filter(
+    (item) =>
+      item.title.toLowerCase().includes(searchInputValue.toLowerCase()) ||
+      item.ingredients.some((ingredient) =>
+        ingredient.toLowerCase().includes(searchInputValue.toLowerCase())
+      )
+  );
 
   return (
     <div className="mt-12 lg:mt-20 lg:mb-24">
@@ -17,8 +27,20 @@ export default function Recipes() {
         the search bar to find a recipe by name or ingredient, or simply scroll the list and let
         something delicious catch your eye.
       </p>
-      <RecipeFilters />
-      <RecipeCard recipesData={recipesData} />
+      <RecipeFilters
+        searchInputValue={searchInputValue}
+        setSearchInputValue={setSearchInputValue}
+      />
+      {filteredRecipe.length > 0 ? (
+        <RecipeCard recipesData={filteredRecipe} />
+      ) : (
+        <div className="h-screen">
+          <p className="pt-10 text-center text-3xl lg:text-4xl">
+            No recipe with name <span className="font-bold uppercase">{searchInputValue}</span>{' '}
+            found :(
+          </p>
+        </div>
+      )}
     </div>
   );
 }
