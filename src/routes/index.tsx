@@ -1,4 +1,5 @@
 import { Navigate, Outlet } from 'react-router';
+import { ScrollRestoration } from 'react-router';
 
 import { Button } from '@/components/ui/button';
 import Footer from '@/components/ui/footer';
@@ -16,6 +17,7 @@ const App = () => {
         <Outlet />
         <Footer />
       </div>
+      <ScrollRestoration />
     </div>
   );
 };
