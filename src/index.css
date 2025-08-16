@@ -90,7 +90,9 @@
   a.active {
     border-bottom: 3px solid var(--destructive);
   }
-  a.pending {
-    color: blue;
+  .card {
+    display: grid;
+    gap: 2rem 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
 }
