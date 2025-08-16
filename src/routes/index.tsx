@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from 'react-router';
 
 import { Button } from '@/components/ui/button';
+import Footer from '@/components/ui/footer';
 import Header from '@/components/ui/header';
 import { AboutRoutes } from '@/features/about';
 import { Home } from '@/features/home';
@@ -13,6 +14,7 @@ const App = () => {
       <Header />
       <div className="flex-1 px-4 md:px-8 lg:px-[124px]">
         <Outlet />
+        <Footer />
       </div>
     </div>
   );

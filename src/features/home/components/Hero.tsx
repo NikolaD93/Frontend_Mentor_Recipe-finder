@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <div className="py-10 lg:py-20 lg:text-center">
       <h1 className="text-5xl font-extrabold lg:text-7xl">
-        <span className="after:bg-destructive relative after:absolute after:bottom-[10px] after:left-0 after:z-[-1] after:h-10 after:w-full after:rounded-[4px] after:opacity-50 after:content-['']">
+        <span className="after:bg-destructive relative after:absolute after:bottom-[10px] after:left-0 after:z-[-1] after:h-5 after:w-full after:rounded-[4px] after:opacity-50 after:content-[''] lg:after:h-10">
           Healthy
         </span>{' '}
         meals, zero fuss
