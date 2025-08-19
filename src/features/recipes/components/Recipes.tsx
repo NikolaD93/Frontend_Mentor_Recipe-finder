@@ -9,7 +9,26 @@ import RecipeFilters from './RecipeFilters';
 export default function Recipes() {
   const recipesData: Recipe[] = recipes;
   const [searchInputValue, setSearchInputValue] = useState('');
-  const filteredRecipe = recipesData.filter(
+  const [prepTimeFilterValue, setPrepTimeFilterValue] = useState('All');
+  const [cookTimeFilterValue, setCookTimeFilterValue] = useState('All');
+
+  let filteredRecipes = recipesData;
+
+  filteredRecipes = filteredRecipes.filter((item) => {
+    if (prepTimeFilterValue === 'clear' || prepTimeFilterValue === 'All') {
+      return true;
+    }
+    return item.prepMinutes.toString() === prepTimeFilterValue;
+  });
+
+  filteredRecipes = filteredRecipes.filter((item) => {
+    if (cookTimeFilterValue === 'clear' || cookTimeFilterValue === 'All') {
+      return true;
+    }
+    return item.cookMinutes.toString() === cookTimeFilterValue;
+  });
+
+  filteredRecipes = filteredRecipes.filter(
     (item) =>
       item.title.toLowerCase().includes(searchInputValue.toLowerCase()) ||
       item.ingredients.some((ingredient) =>
@@ -30,15 +49,14 @@ export default function Recipes() {
       <RecipeFilters
         searchInputValue={searchInputValue}
         setSearchInputValue={setSearchInputValue}
+        setPrepTimeFilterValue={setPrepTimeFilterValue}
+        setCookTimeFilterValue={setCookTimeFilterValue}
       />
-      {filteredRecipe.length > 0 ? (
-        <RecipeCard recipesData={filteredRecipe} />
+      {filteredRecipes.length > 0 ? (
+        <RecipeCard recipesData={filteredRecipes} />
       ) : (
         <div className="h-screen">
-          <p className="pt-10 text-center text-3xl lg:text-4xl">
-            No recipe with name <span className="font-bold uppercase">{searchInputValue}</span>{' '}
-            found :(
-          </p>
+          <p className="pt-10 text-center text-3xl lg:text-4xl">No recipe found :(</p>
         </div>
       )}
     </div>
