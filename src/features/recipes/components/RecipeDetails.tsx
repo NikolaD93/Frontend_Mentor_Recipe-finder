@@ -5,8 +5,9 @@ import iconCookTime from '@/assets/images/icon-cook-time.svg';
 import iconPrepTime from '@/assets/images/icon-prep-time.svg';
 import iconServings from '@/assets/images/icon-servings.svg';
 import { Button } from '@/components/ui/button';
-import recipes from '@/data.json';
 import type { Recipe } from '@/types';
+
+import recipes from '../../../data.json';
 
 export default function RecipeDetails() {
   const { id } = useParams();
@@ -49,7 +50,7 @@ export default function RecipeDetails() {
             <div>
               <h5 className="mb-4 text-2xl font-bold">Ingredients:</h5>
               <ul>
-                {recipeDetails.ingredients.map((item, id) => {
+                {recipeDetails.ingredients.map((item: string, id) => {
                   return (
                     <li className="mb-1 flex items-center gap-2" key={id}>
                       <img src={iconBullet} alt="lorem ipsum" /> {item}
@@ -61,7 +62,7 @@ export default function RecipeDetails() {
             <div>
               <h5 className="mb-4 text-2xl font-bold">Instructions:</h5>
               <ul>
-                {recipeDetails.instructions.map((item, id) => {
+                {recipeDetails.instructions.map((item: string, id) => {
                   return (
                     <li className="mb-1 flex items-center gap-2" key={id}>
                       <img src={iconBullet} alt="lorem ipsum" /> {item}
